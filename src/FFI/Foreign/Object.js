@@ -17,3 +17,15 @@ exports.literal_ = function(fst) {
     };
   };
 };
+
+exports.entries_ = function(tuple) {
+  return function(input) {
+    var output = [];
+    Object.entries(input).forEach(function(keyValue) {
+      var key = keyValue[0];
+      var value = keyValue [1];
+      output.push(tuple(key)(value));
+    });
+    return output;
+  };
+};

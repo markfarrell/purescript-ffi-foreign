@@ -1,9 +1,5 @@
 "use strict";
 
-exports.parse = JSON.parse;
-
-exports.stringify = JSON.stringify;
-
 // todo: move to separate module/package
 exports.try_ = function(left) {
   return function(right) {

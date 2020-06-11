@@ -9,10 +9,11 @@ import Effect.Exception (Error)
 
 import Foreign (Foreign)
 
-import FFI.Unsafe.Foreign.JSON as J
+import FFI.Unsafe.Foreign as F
+
+foreign import parse_ :: String -> Foreign
+
+foreign import stringify :: Foreign -> String
 
 parse :: String -> Either Error Foreign
-parse = J.try J.parse
-
-stringify :: Foreign -> String
-stringify = J.stringify
+parse = F.try parse_
