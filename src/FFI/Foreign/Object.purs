@@ -2,11 +2,8 @@ module FFI.Foreign.Object
   ( keys
   , values
   , literal
-  , string
-  , number
-  , integer
-  , boolean
   , entries
+  , entry
   ) where
 
 import Prelude
@@ -37,18 +34,6 @@ literal = literal_ T.fst T.snd
 
 entry :: forall a. String -> a -> Tuple String Foreign
 entry k v = T.Tuple k $ C.unsafeCoerce v
-
-string :: String -> String -> Tuple String Foreign
-string = entry
-
-number :: String -> Number -> Tuple String Foreign
-number = entry
-
-integer :: String -> Int -> Tuple String Foreign
-integer = entry
-
-boolean :: String -> Boolean -> Tuple String Foreign
-boolean = entry
 
 entries :: Foreign -> Either Error (Array (Tuple String Foreign))
 entries = F.try $ entries_ T.Tuple 
